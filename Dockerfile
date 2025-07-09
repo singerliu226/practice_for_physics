@@ -1,5 +1,5 @@
 # -------- Stage 1：依赖安装 & 构建 --------
-FROM node:20-bullseye-slim AS builder
+FROM node:22-slim AS builder
 
 # 设置工作目录
 WORKDIR /app
@@ -21,10 +21,13 @@ COPY . .
 RUN npm run build
 
 # -------- Stage 2：生成运行时镜像 --------
-FROM node:20-bullseye-slim AS runtime
+FROM node:22-slim AS runtime
 
 # 创建非 root 用户，增强安全性
 RUN useradd --system --create-home --shell /usr/sbin/nologin app
+
+# 默认端口：前端 8080，后端 8081，可在部署时覆盖
+ENV PORT=8080 BACKEND_PORT=8081
 
 WORKDIR /app
 
@@ -35,7 +38,7 @@ COPY --from=builder /app/frontend ./frontend
 COPY --from=builder /app/package*.json ./
 
 # 暴露端口：3000 (Next.js) & 3001 (NestJS)
-EXPOSE 3000 3001
+EXPOSE 8080 8081
 
 USER app
 
