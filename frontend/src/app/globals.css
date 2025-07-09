@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 全局样式变量 */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary-color: #1890ff;
+  --success-color: #52c41a;
+  --warning-color: #faad14;
+  --error-color: #f5222d;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* 自定义组件样式 */
+.physics-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.exercise-card {
+  @apply bg-white rounded-lg shadow-sm border border-gray-100 p-6 mb-4;
+}
+
+.question-content {
+  @apply text-gray-800 leading-relaxed mb-4;
+}
+
+.option-item {
+  @apply p-3 border border-gray-200 rounded-md cursor-pointer transition-colors hover:bg-blue-50;
+}
+
+.option-item.selected {
+  @apply bg-blue-50 border-blue-300;
+}
+
+.option-item.correct {
+  @apply bg-green-50 border-green-300;
+}
+
+.option-item.wrong {
+  @apply bg-red-50 border-red-300;
+}
+
+/* 统计卡片样式 */
+.stats-card {
+  @apply bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg p-6 shadow-lg;
+}
+
+.stats-number {
+  @apply text-3xl font-bold mb-2;
+}
+
+.stats-label {
+  @apply text-blue-100 text-sm;
+}
+
+/* 章节卡片样式 */
+.chapter-card {
+  @apply bg-white rounded-lg border border-gray-200 p-4 cursor-pointer transition-all hover:shadow-md hover:border-blue-300;
+}
+
+.chapter-card.active {
+  @apply border-blue-500 bg-blue-50;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .physics-container {
+    padding: 0 12px;
+  }
+  
+  .exercise-card {
+    @apply p-4 mb-3;
+  }
+}
+
+/* Ant Design 组件覆盖样式 */
+.ant-layout-header {
+  background: #fff !important;
+  border-bottom: 1px solid #f0f0f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.ant-menu-horizontal {
+  border-bottom: none !important;
+}
+
+.physics-logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1890ff;
+  margin-right: 32px;
+} 
