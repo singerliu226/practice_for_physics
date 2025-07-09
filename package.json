@@ -10,7 +10,8 @@
     "dev": "concurrently \"npm --prefix frontend run dev\" \"PORT=3001 npm --prefix backend run start:dev\"",
     "dev:front": "npm --prefix frontend run dev",
     "dev:back": "PORT=3001 npm --prefix backend run start:dev",
-    "build": "npm --prefix frontend run build && npm --prefix backend run build"
+    "build": "npm --prefix frontend run build && npm --prefix backend run build",
+    "start": "concurrently \"npm --prefix backend run start\" \"npm --prefix frontend run start\""
   },
   "devDependencies": {
     "concurrently": "^8.2.0"
